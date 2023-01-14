@@ -57,17 +57,17 @@ class LandingBody extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24.0),
-          const DelayedWidget(
-            delayDuration: Duration(milliseconds: 3100),
-            from: DelayFrom.bottom,
-            child: SelectableText(
-              AppConstants.disclaimer,
-              style: TextStyle(
-                fontSize: 16.0,
-                color: Colors.white,
-              ),
-            ),
-          ),
+          // const DelayedWidget(
+          //   delayDuration: Duration(milliseconds: 3100),
+          //   from: DelayFrom.bottom,
+          //   child: SelectableText(
+          //     AppConstants.disclaimer,
+          //     style: TextStyle(
+          //       fontSize: 16.0,
+          //       color: Colors.white,
+          //     ),
+          //   ),
+          // ),
           const SizedBox(height: 56.0),
 
           DelayedWidget(
@@ -87,7 +87,9 @@ class LandingBody extends StatelessWidget {
                             ? 3
                             : 1;
 
-                    final itemWidth = (availableWidth - ((rowItemCount - 1) * 16.0)) / rowItemCount;
+                    final itemWidth =
+                        (availableWidth - ((rowItemCount - 1) * 16.0)) /
+                            rowItemCount;
 
                     return SizedBox(
                       width: itemWidth,
