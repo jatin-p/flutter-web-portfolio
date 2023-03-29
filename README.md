@@ -2,7 +2,7 @@
 
 A responsive layout; open-source, comment-rich, and clean codebase website built with Flutter web.
 
-![App Banner](https://raw.github.com/jatin-p/flutter-web-portfolio/master/screenshots/site.png)
+![App Banner](https://raw.github.com/jatin-p/flutter-web-portfolio/master/screenshot/site.png)
 
 ## 🚀 Motivation
 
