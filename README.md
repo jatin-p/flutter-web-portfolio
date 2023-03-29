@@ -2,16 +2,16 @@
 
 A responsive layout; open-source, comment-rich, and clean codebase website built with Flutter web.
 
-<img src="https://raw.githubusercontent.com/kamranbekirovyz/flutter-web-portfolio/master/.docs/cover.png" alt="cover"  />
+![App Banner](https://raw.github.com/jatin-p/flutter-web-portfolio/master/screenshots/site.png)
 
 ## 🚀 Motivation
 
 
 Previously, I had a web portfolio for myself hosted at <a href="https://kamranbekirov.com">kamranbekirov.com</a> built with HTML and CSS. While learning Flutter web I thought it might be interesting and challenging to build the same website but now using Flutter web and responsiveness (mobile, tablet, desktop) in mind. On that journey, I added many animations to make the website interactive.
 
-Demo link: <a href="https://kamranbekirovyz.github.io">kamranbekirovyz.github.io</a>
+Demo link: <a href="https://jatinp.com">jatinp.com</a>
 
-The codebase is open-source and rich in comments. Although you can use it any way you want, beware that it (my old website that was built with HTML and CSS to be more specific) was inspired and cloned from an open-source template called <a href="https://html5up.net/solid-state">Solid state</a>. So, in case of usage, I suggest you respect its authors and do not use my personal logo as it is yours. 🤓  
+The codebase is open-source and rich in comments. Although you can use it any way you want, beware that it (my old website that was built with HTML and CSS to be more specific) was inspired and cloned from an open-source template called <a href="https://html5up.net/solid-state">Solid state</a>. 🤓  
 
 ## 🙏 Credits
 
