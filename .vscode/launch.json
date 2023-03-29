@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "kamranbekirovcom-website",
+            "name": "jatinpcom-website",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "kamranbekirovcom-website (profile mode)",
+            "name": "jatinpcom-website (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "kamranbekirovcom-website (release mode)",
+            "name": "jatinpcom-website (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

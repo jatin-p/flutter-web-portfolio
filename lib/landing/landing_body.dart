@@ -19,7 +19,7 @@ class LandingBody extends StatelessWidget {
       constraints: const BoxConstraints(maxWidth: 1200.0),
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const DelayedWidget(
             delayDuration: Duration(milliseconds: 2800),
