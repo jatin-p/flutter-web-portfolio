@@ -9,7 +9,8 @@ class SocialMediaButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final alignment = context.isDesktop ? WrapAlignment.start : WrapAlignment.center;
+    final alignment =
+        context.isDesktop ? WrapAlignment.start : WrapAlignment.center;
     final wrapAlignment = context.isMobile ? Alignment.center : null;
 
     return Container(
@@ -33,21 +34,6 @@ class SocialMediaButtons extends StatelessWidget {
             index: 2,
             url: AppConstants.linkedInProfileURL,
             iconData: FontAwesomeIcons.linkedin,
-          ),
-          SocialMediaButton(
-            index: 3,
-            url: AppConstants.twitterURL,
-            iconData: FontAwesomeIcons.twitter,
-          ),
-          SocialMediaButton(
-            index: 4,
-            url: AppConstants.facebookProfileURL,
-            iconData: FontAwesomeIcons.facebook,
-          ),
-          SocialMediaButton(
-            index: 5,
-            url: AppConstants.instagramProfileURL,
-            iconData: FontAwesomeIcons.instagram,
           ),
         ],
       ),

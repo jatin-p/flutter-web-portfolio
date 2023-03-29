@@ -7,7 +7,8 @@ class AnimatedBackgroundImage extends StatefulWidget {
   const AnimatedBackgroundImage(this.scrollController, {super.key});
 
   @override
-  State<AnimatedBackgroundImage> createState() => _AnimatedBackgroundImageState();
+  State<AnimatedBackgroundImage> createState() =>
+      _AnimatedBackgroundImageState();
 }
 
 class _AnimatedBackgroundImageState extends State<AnimatedBackgroundImage> {
@@ -39,8 +40,10 @@ class _AnimatedBackgroundImageState extends State<AnimatedBackgroundImage> {
       child: Opacity(
         opacity: 0.3,
         child: FadeInImage.assetNetwork(
-          placeholder: 'assets/images/transparent.png',
-          image: 'https://porelarte.tech/kamranbekirovcom/background-min.jpg',
+          placeholder:
+              'https://s3.ca-central-1.amazonaws.com/jatinp.com/img/transparent.png',
+          image:
+              'https://s3.ca-central-1.amazonaws.com/jatinp.com/img/backdrop.png',
           fit: BoxFit.cover,
           alignment: Alignment(0.0, _y),
         ),

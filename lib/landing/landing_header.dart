@@ -38,7 +38,7 @@ class LandingHeader extends StatelessWidget {
 
   Widget _buildSurface(BuildContext context) {
     // Altough the "responsive_framework" package handles most of the
-    // responsiveness-related stuff for us, we need some cusotm styling based on
+    // responsiveness-related stuff for us, we need some custom styling based on
     // the current view whether it is mobile, tablet or desktop.
     //
     // At that moment, ResponsiveValue<T> comes very handy and I've added some
@@ -75,7 +75,8 @@ class LandingHeader extends StatelessWidget {
     ).value;
 
     // Motto text alignment: when Desktop = start, when Mobile and Tablet = center.
-    final mottoTextAlignment = context.isDesktop ? TextAlign.start : TextAlign.center;
+    final mottoTextAlignment =
+        context.isDesktop ? TextAlign.start : TextAlign.center;
 
     // Max width of centered view when Mobile = 602, Tablet = 800, when Desktop = 1200
     final maxWidth = ResponsiveValue<double>(
@@ -103,7 +104,7 @@ class LandingHeader extends StatelessWidget {
               // Personal logo
               ClipOval(
                 child: FadeInImage.assetNetwork(
-                  image: 'https://porelarte.tech/kamranbekirovcom/personal-logo.png',
+                  image: 'assets/images/icon.png',
                   placeholder: 'assets/images/transparent.png',
                   height: logoSize,
                   width: logoSize,
@@ -111,7 +112,7 @@ class LandingHeader extends StatelessWidget {
               ),
               const SizedBox(width: 16.0),
 
-              // Text: "KAMRAN BEKIROV"
+              // Text:
               Expanded(
                 child: DelayedWidget(
                   delayDuration: const Duration(milliseconds: 1000),
