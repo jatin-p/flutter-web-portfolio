@@ -15,7 +15,7 @@ abstract class AppConstants {
   static const twitterURL = 'https://twitter.com/';
   static const instagramProfileURL = 'https://instagram.com/';
   static const facebookProfileURL = 'https://www.facebook.com/';
-  static const eMail = 'jatinkpa@gmail.com';
+  static const eMail = 'mailto:jatinkpa@gmail.com';
   static const flutterWebSiteURL = 'https://flutter.dev';
   static const openSourceRepoURL =
       'https://github.com/jatin-p/flutter-web-portfolio';
