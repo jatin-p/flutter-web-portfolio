@@ -10,6 +10,14 @@
       "StackName": "amplify-flutterwebportfolio-dev-14109",
       "StackId": "arn:aws:cloudformation:ca-central-1:483122832981:stack/amplify-flutterwebportfolio-dev-14109/50165ab0-cdf4-11ed-bd9a-022cf804648e",
       "AmplifyAppId": "d3tbbpk5ni4xm4"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d3tbbpk5ni4xm4",
+          "type": "cicd"
+        }
+      }
     }
   }
 }

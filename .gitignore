@@ -67,3 +67,5 @@ amplifytools.xcconfig
 #amplify-do-not-edit-end
 amplify/backend/backend-config.json
 amplify/team-provider-info.json
+amplify/backend/backend-config.json
+amplify/team-provider-info.json
