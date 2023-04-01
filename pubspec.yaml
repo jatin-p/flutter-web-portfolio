@@ -28,9 +28,9 @@ flutter:
     - assets/images/
 
   fonts:
-    - family: Ubuntu
+    - family: Roboto
       fonts:
-        - asset: assets/fonts/Ubuntu/Ubuntu-Bold.ttf
-        - asset: assets/fonts/Ubuntu/Ubuntu-Medium.ttf
-        - asset: assets/fonts/Ubuntu/Ubuntu-Regular.ttf
-        - asset: assets/fonts/Ubuntu/Ubuntu-Light.ttf
+        - asset: assets/fonts/Roboto/Roboto-Bold.ttf
+        - asset: assets/fonts/Roboto/Roboto-Medium.ttf
+        - asset: assets/fonts/Roboto/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto/Roboto-Light.ttf

@@ -30,7 +30,7 @@ class App extends StatelessWidget {
       home: const LandingScreen(),
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        fontFamily: 'Ubuntu',
+        fontFamily: 'Roboto',
       ),
     );
   }
