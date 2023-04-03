@@ -107,7 +107,7 @@ class LandingHeader extends StatelessWidget {
                   image:
                       'https://s3.ca-central-1.amazonaws.com/jatinp.com/img/Icon.png',
                   placeholder:
-                      'https://s3.ca-central-1.amazonaws.com/jatinp.com/img/transparent.png',
+                      'https://s3.ca-central-1.amazonaws.com/jatinp.com/img/linux_terminal_wallpaper-(64-max).png',
                   height: logoSize,
                   width: logoSize,
                 ),
