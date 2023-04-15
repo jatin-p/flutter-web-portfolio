@@ -19,5 +19,5 @@ abstract class AppConstants {
   static const flutterWebSiteURL = 'https://flutter.dev';
   static const openSourceRepoURL =
       'https://github.com/jatin-p/flutter-web-portfolio';
-  static const openSourceRepoText = 'flutter-web-portfolio repo';
+  static const openSourceRepoText = 'flutter-web-portfolio code';
 }
