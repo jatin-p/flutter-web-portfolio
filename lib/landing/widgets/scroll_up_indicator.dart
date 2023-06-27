@@ -100,9 +100,9 @@ class _ScrollUpIndicatorState extends State<ScrollUpIndicator> {
         launchUrl(AppConstants.openSourceRepoURL);
       },
       behavior: HitTestBehavior.translucent,
-      child: Row(
+      child: const Row(
         mainAxisSize: MainAxisSize.min,
-        children: const [
+        children: [
           SizedBox(width: 24.0),
           Text(
             'BUILT\nWITH',

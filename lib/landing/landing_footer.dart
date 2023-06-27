@@ -20,11 +20,11 @@ class LandingFooter extends StatelessWidget {
             onPressed: () {
               launchUrl(AppConstants.openSourceRepoURL);
             },
-            child: Padding(
+            child: const Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+                  EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
               child: Row(
-                children: const [
+                children: [
                   Icon(
                     FontAwesomeIcons.github,
                     color: Colors.white,
