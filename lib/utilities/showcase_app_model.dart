@@ -41,7 +41,7 @@ const apps = [
   ShowcaseAppModel.withNetworkAsset(
     name: 'lemmy.pictures',
     image:
-        'https://s3.ca-central-1.amazonaws.com/jatinp.com/img/lemmy.pictures.png',
+        'https://s3.ca-central-1.amazonaws.com/jatinp.com/img/app/lemmy.pictures/frontpage.png',
     //playStoreURL: 'www.play.google.com',
     githubURL: 'https://github.com/jatin-p/lemmy-terraform',
     topic: 'Terraform/Azure/Ansible',

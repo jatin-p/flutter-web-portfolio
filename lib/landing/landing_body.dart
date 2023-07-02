@@ -17,7 +17,7 @@ class LandingBody extends StatelessWidget {
     return Container(
       // Keeps UI clean and centered when screen size is bigger than 1200.0
       constraints: const BoxConstraints(maxWidth: 1200.0),
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      padding: const EdgeInsets.symmetric(horizontal: 42.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
