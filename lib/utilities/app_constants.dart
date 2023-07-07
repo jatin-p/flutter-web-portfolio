@@ -6,7 +6,7 @@ abstract class AppConstants {
   static const showcaseTitle = 'Projects';
   static const showcaseDescription = '';
   static const landingTitle = 'Jatin Patel';
-  static const landingMotto = 'AWS | Azure | Terraform';
+  static const landingMotto = 'AWS | Azure | Terraform | Docker';
   static const webSiteURL = 'jatinp.com';
   static const gitHubProfileURL = 'https://github.com/jatin-p';
   static const linkedInProfileURL = 'https://linkedin.com/in/jatin-p';
