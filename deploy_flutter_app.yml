@@ -5,10 +5,28 @@
     ansible_ssh_private_key_file: ~/.ssh/awskey
   become: true
   tasks:
-    - name: Install Docker dependencies
+    - name: Install aptitude
+        apt:
+          name: aptitude
+          state: latest
+          update_cache: true
+
+    - name: install dependencies
       apt:
-        name: ['apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common']
-        update_cache: yes
+        state: latest
+        update_cache: true
+        pkg:
+          - "nginx"
+          - "certbot"
+          - "python3-certbot-nginx"
+          - "apt-transport-https"
+          - "ca-certificates"
+          - "curl"
+          - "gnupg"
+          - "software-properties-common"
+          - "python3-pip"
+          - "virtualenv"
+          - "python3-setuptools"
 
     - name: Add Docker GPG key
       apt_key:
@@ -62,10 +80,16 @@
         state: started
         enabled: yes
 
-    - name: Expose NGINX port
+    - name: Expose NGINX HTTP port
       ufw:
         rule: allow
         port: '80'
+        proto: tcp
+
+    - name: Expose HTTPS port
+      ufw:
+        rule: allow
+        port: '443'
         proto: tcp
 
     - name: Run Docker container for Flutter web app
