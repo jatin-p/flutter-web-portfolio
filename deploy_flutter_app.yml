@@ -1,0 +1,77 @@
+---
+- name: Deploy Flutter web app on Ubuntu EC2 instance
+  hosts: all
+  vars:
+    ansible_ssh_private_key_file: ~/.ssh/awskey
+  become: true
+  tasks:
+    - name: Install Docker dependencies
+      apt:
+        name: ['apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common']
+        update_cache: yes
+
+    - name: Add Docker GPG key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker repository
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu jammy stable
+        state: present
+
+    - name: Install Docker
+      apt:
+        name: docker-ce
+        state: present
+
+    - name: Install Docker Compose
+      pip:
+        name: docker-compose
+        state: present
+
+    - name: copy docker config
+      copy:
+        src: '../configs/docker-daemon.json'
+        dest: '/etc/docker/daemon.json'
+        mode: '0644'
+        
+    - name: request initial letsencrypt certificate
+      command: certbot certonly --nginx --agree-tos --cert-name '{{ domain }}' -d '{{ domain }}' -m '{{ letsencrypt_contact_email }}'
+      args:
+        creates: "/etc/letsencrypt/live/{{domain}}/privkey.pem"
+
+    - name: Pull Flutter web app Docker image
+      docker_image:
+        name: jatinkpa/flutter_web_portfolio
+        state: present
+
+    - name: Copy NGINX configuration
+      copy:
+        src: ../configs/nginx.conf
+        dest: /etc/nginx/nginx.conf
+
+    - name: Install NGINX
+      apt:
+        name: nginx
+        state: present
+
+    - name: Enable and start NGINX service
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Expose NGINX port
+      ufw:
+        rule: allow
+        port: '80'
+        proto: tcp
+
+    - name: Run Docker container for Flutter web app
+      docker_container:
+        name: flutter_web_app
+        image: jatinkpa/flutter_web_portfolio
+        state: started
+        ports:
+          - "8080:80"
