@@ -1,15 +1,15 @@
 ---
 - name: Deploy Flutter web app on Ubuntu EC2 instance
   hosts: all
+  become: true
   vars:
     ansible_ssh_private_key_file: ~/.ssh/awskey
-  become: true
   tasks:
     - name: Install aptitude
-        apt:
-          name: aptitude
-          state: latest
-          update_cache: true
+      apt:
+        name: aptitude
+        state: latest
+        update_cache: true
 
     - name: install dependencies
       apt:
@@ -53,7 +53,7 @@
         src: '../configs/docker-daemon.json'
         dest: '/etc/docker/daemon.json'
         mode: '0644'
-        
+
     - name: request initial letsencrypt certificate
       command: certbot certonly --nginx --agree-tos --cert-name '{{ domain }}' -d '{{ domain }}' -m '{{ letsencrypt_contact_email }}'
       args:
