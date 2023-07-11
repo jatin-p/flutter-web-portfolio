@@ -61,7 +61,7 @@
 
     - name: Pull Flutter web app Docker image
       docker_image:
-        name: jatinkpa/flutter_web_portfolio
+        name: jatinkpa/flutter_web_portfolio:0.1
         state: present
 
     - name: Copy NGINX configuration
@@ -95,7 +95,7 @@
     - name: Run Docker container for Flutter web app
       docker_container:
         name: flutter_web_app
-        image: jatinkpa/flutter_web_portfolio
+        image: jatinkpa/flutter_web_portfolio:0.1
         state: started
         ports:
           - "8080:80"
