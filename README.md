@@ -1,7 +1,7 @@
 # Portfolio website using Flutter Web w/ Docker & Ansible Setup
 
 Added a Dockerfile for build via debian:bookworm and containerization in an nginx:bookworm image. Use Ansible for installation/configuration of your Ubuntu 22.04 server along with Docker Engine, auto SSL/TLS certificate renewal. Check/modify ```configs\hosts``` file for your server IP along w/ domain, and Lets Encrypt contact email. Ensure you specifiy your image in the docker-compose.yml file if you clone this repo and to login to your server via ssh using the private key at least once.
-The Dockerized version of this website is hosted at ![aijnt.com](https://aijnt.com)
+The Dockerized version of this website is hosted at <a href="https://aijnt.com">aijnt.com</a>
 
 A responsive layout; open-source, dynamic (changes depending on window size to work w/ mobile, tablet and desktop users) and clean codebase website built with Flutter web.
 
