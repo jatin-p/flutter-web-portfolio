@@ -58,45 +58,117 @@
       command: certbot certonly --nginx --agree-tos --cert-name '{{ domain }}' -d '{{ domain }}' -m '{{ letsencrypt_contact_email }}'
       args:
         creates: "/etc/letsencrypt/live/{{domain}}/privkey.pem"
+    
+    - name: create web folder
+      file:
+        path: "{{item.path}}"
+        owner: "{{item.owner}}"
+        state: directory
+      with_items:
+        - path: "/web/{{domain}}/"
+          owner: "root"
+    - block:
+            - name: add template files
+              template:
+                src: "{{item.src}}"
+                dest: "{{item.dest}}"
+                mode: "{{item.mode}}"
+              with_items:
+                - src: "./configs/docker-compose.yml"
+                  dest: "web/{{domain}}/docker-compose.yml"
+                  mode: "0600"
+                - src: "./configs/nginx_internal.conf"
+                  dest: "/web/{{domain}}/nginx_internal.conf"
+                  mode: "0644"
+                - src: "./configs/nginx.conf"
+                  dest: "/etc/nginx/sites-available/{{domain}}.conf"
+                  mode: "0644"
 
-    - name: Pull Flutter web app Docker image
-      docker_image:
-        name: jatinkpa/flutter-web-portfolio:0.1
-        state: present
-        source: pull
+            - block:
+                - name: gather stats on site enabled config
+                  stat:
+                    path: "/etc/nginx/sites-enabled/{{domain}}.conf"
+                  register: reg_enabled
 
-    - name: Copy NGINX configuration
-      copy:
-        src: ./configs/nginx.conf
-        dest: /etc/nginx/nginx.conf
+                - name: remove if regular file (legacy) instead of symlink
+                  file:
+                    path: "/etc/nginx/sites-enabled/{{domain}}.conf"
+                    state: absent
+                  when: reg_enabled.stat.exists and reg_enabled.stat.isreg
 
-    - name: Install NGINX
-      apt:
-        name: nginx
-        state: present
+                - name: enable nginx site
+                  file:
+                    src: "../sites-available/{{domain}}.conf"
+                    dest: "/etc/nginx/sites-enabled/{{domain}}.conf"
+                    state: link
 
-    - name: Enable and start NGINX service
-      service:
-        name: nginx
-        state: started
-        enabled: yes
+        - name: enable and start docker service
+          systemd:
+            name: docker
+            enabled: yes
+            state: started
 
-    - name: Expose NGINX HTTP port
-      ufw:
-        rule: allow
-        port: '80'
-        proto: tcp
+        # - name: Change the working directory to /opt
+        #   ansible.builtin.shell:
+        #     cmd: find .                    # To list files under /opt directory
+        #     chdir: /opt                    # changes to /opt directory
+        #     register: shell_output
+        # - debug: var=shell_output
 
-    - name: Expose HTTPS port
-      ufw:
-        rule: allow
-        port: '443'
-        proto: tcp
+        - name: start docker-compose
+          docker_compose:
+            project_src: "{{lemmy_base_dir}}/{{domain}}"
+            state: present
+            pull: yes
+            remove_orphans: yes
 
-    - name: Run Docker container for Flutter web app
-      docker_container:
-        name: flutter_web_app
-        image: jatinkpa/flutter-web-portfolio:0.1
-        state: started
-        ports:
-          - "8080:80"
+        - name: reload nginx with new config
+          shell: nginx -s reload
+
+        - name: certbot renewal cronjob
+          cron:
+            special_time: daily
+            name: certbot-renew-lemmy
+            user: root
+            job: "certbot certonly --nginx --cert-name '{{ domain }}' -d '{{ domain }}' --deploy-hook 'nginx -s reload'"
+    # - name: Pull Flutter web app Docker image
+    #   docker_image:
+    #     name: jatinkpa/flutter-web-portfolio:0.1
+    #     state: present
+    #     source: pull
+
+    # - name: Copy NGINX configuration
+    #   copy:
+    #     src: ./configs/nginx.conf
+    #     dest: /etc/nginx/nginx.conf
+
+    # - name: Install NGINX
+    #   apt:
+    #     name: nginx
+    #     state: present
+
+    # - name: Enable and start NGINX service
+    #   service:
+    #     name: nginx
+    #     state: started
+    #     enabled: yes
+
+    # - name: Expose NGINX HTTP port
+    #   ufw:
+    #     rule: allow
+    #     port: '80'
+    #     proto: tcp
+
+    # - name: Expose HTTPS port
+    #   ufw:
+    #     rule: allow
+    #     port: '443'
+    #     proto: tcp
+
+    # - name: Run Docker container for Flutter web app
+    #   docker_container:
+    #     name: flutter_web_app
+    #     image: jatinkpa/flutter-web-portfolio:0.1
+    #     state: started
+    #     ports:
+    #       - "8080:80"
