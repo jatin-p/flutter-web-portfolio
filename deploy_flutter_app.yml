@@ -75,7 +75,7 @@
                 mode: "{{item.mode}}"
               with_items:
                 - src: "./configs/docker-compose.yml"
-                  dest: "web/{{domain}}/docker-compose.yml"
+                  dest: "/web/{{domain}}/docker-compose.yml"
                   mode: "0600"
                 - src: "./configs/nginx_internal.conf"
                   dest: "/web/{{domain}}/nginx_internal.conf"
