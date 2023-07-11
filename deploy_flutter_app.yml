@@ -102,6 +102,17 @@
                     dest: "/etc/nginx/sites-enabled/{{ domain }}.conf"
                     state: link
 
+    - name: Create www.{{ domain }} redirect configuration
+      copy:
+        content: |
+          server {
+              listen 80;
+              server_name www.{{ domain }};
+              return 301 $scheme://{{ domain }}$request_uri;
+          }
+        dest: "/etc/nginx/conf.d/www.{{ domain }}.conf"
+        mode: "0644"
+
     - name: enable and start docker service
       systemd:
         name: docker
