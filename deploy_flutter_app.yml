@@ -63,6 +63,7 @@
       docker_image:
         name: jatinkpa/flutter_web_portfolio:0.1
         state: present
+        source: pull
 
     - name: Copy NGINX configuration
       copy:
