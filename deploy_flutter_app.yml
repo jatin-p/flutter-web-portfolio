@@ -102,11 +102,11 @@
                     dest: "/etc/nginx/sites-enabled/{{domain}}.conf"
                     state: link
 
-        - name: enable and start docker service
-          systemd:
-            name: docker
-            enabled: yes
-            state: started
+    - name: enable and start docker service
+      systemd:
+        name: docker
+        enabled: yes
+        state: started
 
         # - name: Change the working directory to /opt
         #   ansible.builtin.shell:
@@ -115,22 +115,22 @@
         #     register: shell_output
         # - debug: var=shell_output
 
-        - name: start docker-compose
-          docker_compose:
-            project_src: "{{lemmy_base_dir}}/{{domain}}"
-            state: present
-            pull: yes
-            remove_orphans: yes
+    - name: start docker-compose
+      docker_compose:
+        project_src: "{{lemmy_base_dir}}/{{domain}}"
+        state: present
+        pull: yes
+        remove_orphans: yes
 
-        - name: reload nginx with new config
-          shell: nginx -s reload
+    - name: reload nginx with new config
+      shell: nginx -s reload
 
-        - name: certbot renewal cronjob
-          cron:
-            special_time: daily
-            name: certbot-renew-lemmy
-            user: root
-            job: "certbot certonly --nginx --cert-name '{{ domain }}' -d '{{ domain }}' --deploy-hook 'nginx -s reload'"
+    - name: certbot renewal cronjob
+      cron:
+        special_time: daily
+        name: certbot-renew-lemmy
+        user: root
+        job: "certbot certonly --nginx --cert-name '{{ domain }}' -d '{{ domain }}' --deploy-hook 'nginx -s reload'"
     # - name: Pull Flutter web app Docker image
     #   docker_image:
     #     name: jatinkpa/flutter-web-portfolio:0.1
