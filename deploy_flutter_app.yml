@@ -117,7 +117,7 @@
 
     - name: start docker-compose
       docker_compose:
-        project_src: "{{lemmy_base_dir}}/{{domain}}"
+        project_src: "/web/{{domain}}"
         state: present
         pull: yes
         remove_orphans: yes
@@ -128,7 +128,7 @@
     - name: certbot renewal cronjob
       cron:
         special_time: daily
-        name: certbot-renew-lemmy
+        name: certbot-renew-website-ssl
         user: root
         job: "certbot certonly --nginx --cert-name '{{ domain }}' -d '{{ domain }}' --deploy-hook 'nginx -s reload'"
     # - name: Pull Flutter web app Docker image
